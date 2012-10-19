@@ -115,7 +115,6 @@ ASSERTION+4 every OBJECT is PROPPHRASE
 ASSERTION+4 there exists a PROPPHRASE OBJECT
 ASSERTION+4 INLINEEQ
 ASSERTION+4 DISPEQ
-#ASSERTION FAMOUSPOS conjecture is BOOL
 ASSERTION FAMOUSPOS conjecture is BOOL in the context of OBJECTS
 
 
@@ -659,13 +658,7 @@ METAVERB describe
 METAVERBED described
 METAVERBING describing
 METANOUN description
-#METAVERB prove
-#METAVERBED proved
-#METAVERBING proving
-#METANOUN proof
-#METAVERB establish
-#METAVERBED established
-#METAVERBING establishing
+
 METAVERB study
 METAVERBED studied
 METAVERBING studying
@@ -681,10 +674,6 @@ METAVERB extend
 METAVERBED extended
 METAVERBING extending
 METANOUN extension
-#METAVERB disprove
-#METAVERBED disproved
-#METAVERBING disproving
-#METANOUN disproof
 
 PROPNOUN continuity
 PROPNOUN+5 existence
@@ -704,7 +693,6 @@ PROPNOUN associativity
 PROPNOUN convexity
 PROPNOUN countability
 PROPNOUN degeneracy
-#PROPNOUN geometry
 PROPNOUN invariance
 PROPNOUN integrability
 PROPNOUN smoothness
@@ -887,7 +875,6 @@ FUNC \tanh
 FUNC+2 \log
 FUNC+6 VAR
 
-#EXPRC EXPRB BINOP EXPRB
 EXPRC FUNC \left( EXPRB \right)
 EXPRC VAR \left( EXPRB, EXPRB \right)
 EXPRC VAR \left( EXPRB, \dots, EXPRB \right)
@@ -933,10 +920,10 @@ EXPRD+3 BIGOP EXPRC
 EXPRD+2 INTLIM EXPRC \,d VAR
 EXPRD BIGOP INTLIM EXPRC \,d VAR
 EXPRD INTLIM BIGOP EXPRC \,d VAR
-#EXPRD INTLIM INTLIM EXPRC \,d VAR \,d VAR
+
 EXPRD+2 \frac{EXPRC}{EXPRC}
 EXPRD EXPRC BINOP EXPRC
-#EXPRD EXPRC BINOP EXPRC BINOP EXPRC
+
 EXPRD+1 EXPRC
 
 EXPRE EXPRD BINOP EXPRC
@@ -948,8 +935,6 @@ MEDEQ EXPRC REL EXPRD
 
 LONGEQ+3 EXPRC REL EXPRE
 LONGEQ EXPRC REL \begin{cases} EXPRD, & SHORTEQ \\ EXPRD, & SHORTEQ \end{cases}
-
-#TESTPARA DISPEQ.
 
 # Important that this be on one line so prettyprint can detect "DISPEQ."
 DISPEQ $$MEDEQ$$
@@ -1525,7 +1510,6 @@ NOCITATION \nocite{CITATION_NEW}
 CITE_AUTHOR_LIST+6 AUTHOR 
 CITE_AUTHOR_LIST+8 AUTHOR and AUTHOR
 CITE_AUTHOR_LIST+3 AUTHOR and AUTHOR and AUTHOR
-#CITE_AUTHOR_LIST!
 
 CITE_MONTH jan
 CITE_MONTH feb
@@ -1619,17 +1603,6 @@ CITE_TRNUM MED_NUM/MED_NUM
 CITE_TRNUM MED_NUM
 CITE_TRNUM MED_NUM-MED_NUM
 
-# BIBTEX_ENTRY+10 {
-
-#  @InProceedings{CITE_LABEL_GIVEN,
-#   author = {CITE_AUTHOR_LIST},
-#   title = {ATITLE},
-#   booktitle = {CITE_CONF},
-#   month = CITE_MONTH,
-#   year = CITE_YEAR}
-
-# }
-
 BIBTEX_ENTRY+2 {
 
  @article{CITE_LABEL_GIVEN,
@@ -1651,15 +1624,3 @@ BIBTEX_ENTRY {
       year = {CITE_YEAR},
      pages = {MED_NUM}}
 }
-
-# BIBTEX_ENTRY {
-
-#  @techreport{CITE_LABEL_GIVEN,
-#   author = {CITE_AUTHOR_LIST},
-#   title = {SCI_TITLE_X},
-#   institution = {CITE_INST},
-#   number = {CITE_TRNUM},
-#   month = CITE_MONTH,
-#   year = CITE_YEAR}
-
-# }

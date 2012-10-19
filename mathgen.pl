@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 
 #    mathgen.pl: main driver code
 #
@@ -20,6 +20,7 @@
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 use strict;
+use warnings;
 use scigen;
 use Getopt::Long;
 use File::Temp qw { tempdir };
@@ -44,18 +45,18 @@ my $data_dir = '.';
 sub usage {
     select(STDERR);
     print <<EOUsage;
-    
+
 $0 [options]
   Options:
 
     --help                    Display this help message
-    --author=<quoted_name>    An author of the paper (can be specified 
+    --author=<quoted_name>    An author of the paper (can be specified
                               multiple times)
                               Default: One random author
     --mode=pdf|zip|dir|view|raw
                               What to output
     	   		      pdf: Output a PDF file
-			      zip: Output a zip file with 
+			      zip: Output a zip file with
 			      	   LaTeX/BiBTeX source and PDF
 			      dir: Leave source and PDF in directory
 			       	   specified with --dir
@@ -84,9 +85,9 @@ my $seed;
 my $debug = 0;
 
 my %options;
-GetOptions( \%options, 
+GetOptions( \%options,
 	    "help|?" => \&usage,
-	    "author=s@" => \@authors, 
+	    "author=s@" => \@authors,
 	    "mode=s" => \$mode,
 	    "viewer=s" => \$viewer,
 	    "dir=s" => \$dir,
@@ -117,7 +118,7 @@ if (!defined($dir)) {
 	or die("tempdir: $!");
     if ($debug) {
 	print STDERR "dir = $dir\n";
-    } 
+    }
 }
 
 my $output_fh;
@@ -268,7 +269,7 @@ if ($mode eq 'pdf') {
     output_filespec("<$basename.pdf", "$basename.pdf");
 } elsif ($mode eq 'zip') {
     dump_to_file($readme_text{$product}, 'README');
-    # Useless Use Of Cat issue: we could have zip write to the 
+    # Useless Use Of Cat issue: we could have zip write to the
     # output directly.  But we already opened it, and I don't feel like
     # special casing that for --mode=zip.  Also trying to pass the output
     # filename in a shell command seems dicey.
@@ -297,7 +298,7 @@ sub output_filespec {
     while (<$fh>) {
 	print $output_fh $_;
     }
-    close($fh) 
+    close($fh)
 	or die("$filename: $!");
 }
 
@@ -321,7 +322,7 @@ sub generate_bibtex {
     foreach my $clabel (keys(%citelabels)) {
 	$rules->{"CITE_LABEL_GIVEN"} = [ $clabel ];
 	scigen::compute_re($rules, \$rules_RE); # seems inefficient
-	$bib .= scigen::generate 
+	$bib .= scigen::generate
 	    ($rules, "BIBTEX_ENTRY", $rules_RE, $debug, 'bibtex');
 	$bib .= "\n";
     }

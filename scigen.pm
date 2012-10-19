@@ -25,6 +25,7 @@ package scigen;
 
 
 use strict;
+use warnings;
 use IO::File;
 use Data::Dumper;
 #use Autoformat;
